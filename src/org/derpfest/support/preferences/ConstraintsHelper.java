@@ -42,7 +42,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import com.android.internal.derp.hardware.LineageHardwareManager;
 import org.derpfest.support.R;
 
 
@@ -185,8 +184,7 @@ public class ConstraintsHelper {
                     rFeature = rFeature.substring(1);
                 }
                 boolean available = rFeature.startsWith("lineagehardware:") ?
-                        LineageHardwareManager.getInstance(mContext).isSupported(
-                                rFeature.substring("lineagehardware:".length())) :
+                        false : // we don't support LineageHardware
                         hasSystemFeature(mContext, rFeature);
                 if (available == negated) {
                     return false;
